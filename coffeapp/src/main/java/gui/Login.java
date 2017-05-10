@@ -51,8 +51,8 @@ public class Login extends JPanel{
 		
 		panel.setPreferredSize(new Dimension(400,400));
 		add(panel);
-		add(btnLogin);
 		
+		add(btnLogin);
 	}
 	
 	public Dimension getPreferredSize(){
