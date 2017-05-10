@@ -15,15 +15,19 @@ import javax.swing.JTextField;
  * 
  */
 public class Login extends JPanel{
+	private int width, height;
+	
 	private JPanel panel = new JPanel();
 	private JLabel lblLogin = new JLabel("Welcome. Please enter username and password");
 	private JLabel lblUsername = new JLabel("Username: ");
 	private JLabel lblPassword = new JLabel("Password: ");
 	private JTextField tfUsername = new JTextField();
 	private JPasswordField pfPassword = new JPasswordField();
-	private JButton btnLogin = new JButton();
+	private JButton btnLogin = new JButton("Login");
 	
-	public Login() {
+	public Login(int width, int height) {
+		this.width = width;
+		this.height = height;
 		initGUIComponents();
 	}
 	
@@ -35,25 +39,32 @@ public class Login extends JPanel{
 		lblLogin.setPreferredSize(new Dimension(300, 100));
 		add(lblLogin);
 		
-		panel.setPreferredSize(new Dimension(400,400));
-		add(panel);
 		tfUsername.setPreferredSize(new Dimension(200, 25));
 		lblUsername.setPreferredSize(new Dimension(100, 40));
-		panel.add(lblUsername);
-		panel.add(tfUsername);
 		lblPassword.setPreferredSize(new Dimension(100, 40));
 		pfPassword.setPreferredSize(new Dimension(200, 25));
+		
+		panel.add(lblUsername);
+		panel.add(tfUsername);
 		panel.add(lblPassword);
 		panel.add(pfPassword);
+		panel.add(btnLogin);
+		
+		panel.setPreferredSize(new Dimension(400,400));
+		add(panel);
+		
 		
 	}
 	
+	public Dimension getPreferredSize(){
+		return new Dimension(width, height);
+	}
 	
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
-		frame.setSize(500, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(new Login());
+		frame.add(new Login(500, 500));
+		frame.pack();
 		frame.setVisible(true);
 	}
 
