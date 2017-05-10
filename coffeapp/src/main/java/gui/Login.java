@@ -48,11 +48,10 @@ public class Login extends JPanel{
 		panel.add(tfUsername);
 		panel.add(lblPassword);
 		panel.add(pfPassword);
-		panel.add(btnLogin);
 		
 		panel.setPreferredSize(new Dimension(400,400));
 		add(panel);
-		
+		add(btnLogin);
 		
 	}
 	
@@ -63,7 +62,7 @@ public class Login extends JPanel{
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(new Login(500, 500));
+		frame.add(new Login(500, 400));
 		frame.pack();
 		frame.setVisible(true);
 	}
