@@ -21,7 +21,7 @@ public class Login extends JPanel{
 	private JLabel lblPassword = new JLabel("Password: ");
 	private JTextField tfUsername = new JTextField();
 	private JPasswordField pfPassword = new JPasswordField();
-	private JButton btnLogin = new JButton();
+	private JButton btnLogin = new JButton("Login");
 	
 	public Login() {
 		initGUIComponents();
@@ -45,6 +45,9 @@ public class Login extends JPanel{
 		pfPassword.setPreferredSize(new Dimension(200, 25));
 		panel.add(lblPassword);
 		panel.add(pfPassword);
+		
+		btnLogin.setPreferredSize(new Dimension(100, 25));
+		panel.add(btnLogin);
 		
 	}
 	
