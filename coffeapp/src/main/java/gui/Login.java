@@ -31,20 +31,20 @@ public class Login extends JPanel{
 	 * Initializes the gui components
 	 */	
 	private void initGUIComponents() {
-//		setPreferredSize(new Dimension(300, 350));
 		
 		lblLogin.setPreferredSize(new Dimension(300, 100));
 		add(lblLogin);
 		
-		tfUsername.setPreferredSize(new Dimension(200, 30));
+		panel.setPreferredSize(new Dimension(400,400));
+		add(panel);
+		tfUsername.setPreferredSize(new Dimension(200, 25));
 		lblUsername.setPreferredSize(new Dimension(100, 40));
-		add(lblUsername);
-		add(tfUsername);
-		
+		panel.add(lblUsername);
+		panel.add(tfUsername);
 		lblPassword.setPreferredSize(new Dimension(100, 40));
-		pfPassword.setPreferredSize(new Dimension(200, 30));
-		add(lblPassword);
-		add(pfPassword);
+		pfPassword.setPreferredSize(new Dimension(200, 25));
+		panel.add(lblPassword);
+		panel.add(pfPassword);
 		
 	}
 	
