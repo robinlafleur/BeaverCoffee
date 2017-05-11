@@ -43,16 +43,17 @@ public class Login extends JPanel{
 		lblUsername.setPreferredSize(new Dimension(100, 40));
 		lblPassword.setPreferredSize(new Dimension(100, 40));
 		pfPassword.setPreferredSize(new Dimension(200, 25));
+		btnLogin.setPreferredSize(new Dimension(100, 25));
 		
 		panel.add(lblUsername);
 		panel.add(tfUsername);
 		panel.add(lblPassword);
 		panel.add(pfPassword);
+		panel.add(btnLogin);
 		
 		panel.setPreferredSize(new Dimension(400,400));
 		add(panel);
 		
-		add(btnLogin);
 	}
 	
 	public Dimension getPreferredSize(){
