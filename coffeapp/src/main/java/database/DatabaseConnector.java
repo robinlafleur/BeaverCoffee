@@ -49,15 +49,4 @@ public class DatabaseConnector {
 		collection.find().forEach(printBlock);
 	}
 	
-	
-	
-	
-	//Test
-	public static void main(String[] args){
-		DatabaseConnector dc = new DatabaseConnector();
-		dc.printTest();
-		
-		
-		
-	}
 }
