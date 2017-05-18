@@ -2,19 +2,21 @@ package database;
 
 import org.bson.Document;
 
+import com.mongodb.Block;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
 public class DatabaseConnector {
-	private MongoClient client;
 	private MongoDatabase database;
+	private MongoCollection<Document> collection;
 	
 	public DatabaseConnector(){
 		this("localhost", 27017);
 	}
 	
 	public DatabaseConnector(String host, int port){
+		MongoClient client = null;
 		int p = 0;
 		try{
 			p = port;
@@ -22,24 +24,34 @@ public class DatabaseConnector {
 		}catch(NumberFormatException e){
 			System.err.println("Port must be of type int");
 		}
+		
+		database = client.getDatabase("test");
+		collection = database.getCollection("users");
 	}
 	
-	public void setCurrentDatabase(String databaseName){
-		database = client.getDatabase(databaseName);
+	public void setCollection(String collection){
+		this.collection = database.getCollection(collection);
 	}
 	
-	public MongoDatabase getCurrentDatabase(){
-		return database;
+	public void printTest(){
+		Block<Document> printBlock = new Block<Document>() {
+			
+		       public void apply(final Document document) {
+		           System.out.println(document.toJson());
+		       }
+		};
+		
+		collection.find().forEach(printBlock);
 	}
+	
+	
 	
 	//Test
 	public static void main(String[] args){
 		DatabaseConnector dc = new DatabaseConnector();
-		dc.setCurrentDatabase("test");
-		MongoDatabase db = dc.getCurrentDatabase();
+		dc.printTest();
 		
-		MongoCollection<Document> collection = db.getCollection("users");
-		System.out.println(collection.find().first().toJson());
+		
 		
 	}
 }
