@@ -3,6 +3,7 @@ package gui;
 import java.awt.Dimension;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -24,6 +25,8 @@ public class Login extends JPanel{
 	private JTextField tfUsername = new JTextField();
 	private JPasswordField pfPassword = new JPasswordField();
 	private JButton btnLogin = new JButton("Login");
+	private JComboBox<String> cbUser;
+	private JLabel lblErrorMsg = new JLabel("");
 	
 	public Login(int width, int height) {
 		this.width = width;
@@ -44,12 +47,19 @@ public class Login extends JPanel{
 		lblPassword.setPreferredSize(new Dimension((width-200), 40));
 		pfPassword.setPreferredSize(new Dimension((width-200), 25));
 		btnLogin.setPreferredSize(new Dimension((width-300), 25));
+		lblErrorMsg.setPreferredSize(new Dimension(width-300, 25));
+		
+		String[] strUsers = {"Employee", "Manager", "Employer"};
+		cbUser = new JComboBox<String>(strUsers);
+		cbUser.setPreferredSize(new Dimension(width-300, 25));
+		add(cbUser);
 		
 		panel.add(lblUsername);
 		panel.add(tfUsername);
 		panel.add(lblPassword);
 		panel.add(pfPassword);
 		panel.add(btnLogin);
+		panel.add(lblErrorMsg);
 		
 		panel.setPreferredSize(new Dimension(400,400));
 		add(panel);
@@ -59,6 +69,28 @@ public class Login extends JPanel{
 	public Dimension getPreferredSize(){
 		return new Dimension(width, height);
 	}
+	
+	public String getUsername(){
+		return tfUsername.getText();
+	}
+	
+	public String getPassword(){
+		String str = new String(pfPassword.getPassword());
+		return str;
+	}
+	
+	public JButton getBtnLogin(){
+		return btnLogin;
+	}
+	
+	public JComboBox<String> getCbUser(){
+		return cbUser;
+	}
+	
+	public void setErrorMsg(String error){
+		lblErrorMsg.setText(error);
+	}
+	
 	
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
