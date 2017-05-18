@@ -6,16 +6,17 @@ import com.mongodb.Block;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import static com.mongodb.client.model.Filters.*;
 
 public class DatabaseConnector {
 	private MongoDatabase database;
 	private MongoCollection<Document> collection;
 	
-	public DatabaseConnector(){
-		this("localhost", 27017);
+	public DatabaseConnector(String database){
+		this(database, "localhost", 27017);
 	}
 	
-	public DatabaseConnector(String host, int port){
+	public DatabaseConnector(String database, String host, int port){
 		MongoClient client = null;
 		int p = 0;
 		try{
@@ -25,13 +26,17 @@ public class DatabaseConnector {
 			System.err.println("Port must be of type int");
 		}
 		
-		database = client.getDatabase("test");
-		collection = database.getCollection("users");
+		this.database = client.getDatabase(database);
 	}
 	
 	public void setCollection(String collection){
 		this.collection = database.getCollection(collection);
 	}
+	
+	public MongoCollection<Document> getCollection(){
+		return this.collection;
+	}
+	
 	
 	public void printTest(){
 		Block<Document> printBlock = new Block<Document>() {
@@ -43,6 +48,7 @@ public class DatabaseConnector {
 		
 		collection.find().forEach(printBlock);
 	}
+	
 	
 	
 	
