@@ -20,11 +20,14 @@ import database.DatabaseConnector;
 public class LoginConnector {
 	private DatabaseConnector dc;
 	private Login loginPnl;
+	private PanelSwitcher ps;
 	private String user = "Employee";
 	
-	public LoginConnector(DatabaseConnector dc, Login loginPnl){
+	public LoginConnector(DatabaseConnector dc, PanelSwitcher ps){
 		this.dc = dc;
-		this.loginPnl = loginPnl;
+		this.loginPnl = (Login)ps.getPanel("Login");
+		this.ps = ps;
+		
 		loginPnl.getBtnLogin().addActionListener(new LoginBtnListener());
 		loginPnl.getCbUser().addActionListener(new UserCBListener());
 	}
@@ -44,6 +47,7 @@ public class LoginConnector {
 			
 			if(authorize(username, password)){
 				loginPnl.setErrorMsg("Login Successful");
+				ps.showCard("CPSP");
 				//Switch panel
 			}else{
 				loginPnl.setErrorMsg("Authorization failed");
@@ -88,17 +92,4 @@ public class LoginConnector {
 		}
 	}
 	
-	//Test
-	public static void main(String[] args) {
-		JFrame frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		DatabaseConnector dc = new DatabaseConnector("BeaverCoffeeDatabase");
-		Login l = new Login(500, 400);
-		LoginConnector lc = new LoginConnector(dc, l);
-		
-		frame.add(l);
-		frame.pack();
-		frame.setVisible(true);
-	}
 }
