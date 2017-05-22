@@ -17,16 +17,13 @@ public class EmployeeMenuPanel extends MainMenuPanel {
 	private void initEmployeeMenuGUI() {
 		JButton btnNewOrder = new JButton("New order");
 		JButton btnUpdateOrder = new JButton("Update order");
-		JButton btnDeleteOrder = new JButton("Delete order");
 		JLabel lblMenu = new JLabel("Welcome!", SwingConstants.CENTER);
 		btnNewOrder.setPreferredSize(new Dimension(120, 20));
 		btnUpdateOrder.setPreferredSize(new Dimension(120, 20));
-		btnDeleteOrder.setPreferredSize(new Dimension(120, 20));
 		lblMenu.setPreferredSize(new Dimension(80, 100));
 		menuPanel.add(lblMenu);
 		menuPanel.add(btnNewOrder);
 		menuPanel.add(btnUpdateOrder);
-		menuPanel.add(btnDeleteOrder);
 	}
 	
 	//Test
