@@ -35,14 +35,10 @@ public class DatabaseSetup {
 		col = dc.getCollection();
 		col.drop();
 		
-		Document emp1 = new Document("name", "Heres Johnny").append("SSN", "8765432").append("address", "Elm Street 2, 23456, Chicago").
-				append("username", "heresjohnny").append("password", "pwhash");
-		Document emp2 = new Document("name", "John Smith").append("ID", "52346").append("address", "Cloverfield Lane, 34567, London").
-				append("username", "johnsmith").append("password", "pwhash");
-		Document emp3 = new Document("name", "Gun Gunnarsson").append("persnr", "640201-5634").append("address", "Malm�gatan 1, 12345, Malmö").
-				append("username", "gungunnarsson").append("password", "pwhash");
-		Document emp4 = new Document("name", "Ellen Ripley").append("SSN", "2345678").append("address", "Nostromo 23, 13456, Minneapolis").
-				append("username", "ellenripley").append("password", "pwhash");
+		Document emp1 = new Document("name", "Heres Johnny").append("SSN", "8765432").append("address", "Elm Street 2, 23456, Chicago");
+		Document emp2 = new Document("name", "John Smith").append("ID", "52346").append("address", "Cloverfield Lane, 34567, London");
+		Document emp3 = new Document("name", "Gun Gunnarsson").append("persnr", "640101-1234").append("address", "Malm�gatan 1, 12345, Malmö");
+		Document emp4 = new Document("name", "Ellen Ripley").append("SSN", "2345678").append("address", "Nostromo 23, 13456, Minneapolis");
 		l = new ArrayList<Document>();
 		l.add(emp1);
 		l.add(emp2);
@@ -54,14 +50,10 @@ public class DatabaseSetup {
 		col = dc.getCollection();
 		col.drop();
 		
-		Document man1 = new Document("name", "Heres Johnny").append("SSN", "8765874").append("address", "Elm Street 2, 23456, Chicago").
-				append("username", "heresjohnny").append("password", "pwhash");
-		Document man2 = new Document("name", "John Smith").append("ID", "52348").append("address", "Cloverfield Lane, 34567, London").
-				append("username", "heresjohnny").append("password", "pwhash");
-		Document man3 = new Document("name", "Gun Gunnarsson").append("persnr", "641103-1256").append("address", "Malm�gatan 1, 12345, Malmö").
-				append("username", "heresjohnny").append("password", "pwhash");
-		Document man4 = new Document("name", "Ellen Ripley").append("SSN", "2345678").append("address", "Nostromo 23, 13456, Minneapolis").
-				append("username", "heresjohnny").append("password", "pwhash");
+		Document man1 = new Document("name", "Heres Johnny").append("SSN", "8765432").append("address", "Elm Street 2, 23456, Chicago");
+		Document man2 = new Document("name", "John Smith").append("ID", "52346").append("address", "Cloverfield Lane, 34567, London");
+		Document man3 = new Document("name", "Gun Gunnarsson").append("persnr", "640101-1234").append("address", "Malm�gatan 1, 12345, Malmö");
+		Document man4 = new Document("name", "Ellen Ripley").append("SSN", "2345678").append("address", "Nostromo 23, 13456, Minneapolis");
 		l = new ArrayList<Document>();
 		l.add(man1);
 		l.add(man2);
@@ -73,12 +65,8 @@ public class DatabaseSetup {
 		col = dc.getCollection();
 		col.drop();
 		
-		Document employer = new Document("name", "Iron Fist").append("persnr", "660606-6666").append("adress", "Dantes Inferno 1, 666 66, Malmö").
-				append("username", "ironfist").append("password", "pwhash");
+		Document employer = new Document("name", "Iron Fist").append("persnr", "660606-6666").append("adress", "Dantes Inferno 1, 666 66, Malmö");
 		col.insertOne(employer);
-		
-		dc.setCollection("Employee");
-		dc.printTest();
 		
 	}
 	

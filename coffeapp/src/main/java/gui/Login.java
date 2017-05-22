@@ -1,6 +1,8 @@
 package gui;
 
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -9,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
+import controllers.PanelSwitcher;
 
 /**
  * @author Robin
@@ -28,10 +32,13 @@ public class Login extends JPanel{
 	private JComboBox<String> cbUser;
 	private JLabel lblErrorMsg = new JLabel("");
 	
-	public Login(int width, int height) {
+	private PanelSwitcher ps;
+	
+	public Login(int width, int height, PanelSwitcher switcher) {
 		this.width = width;
 		this.height = height;
 		initGUIComponents();
+		this.ps = switcher;
 	}
 	
 	/*
@@ -64,6 +71,8 @@ public class Login extends JPanel{
 		panel.setPreferredSize(new Dimension(400,400));
 		add(panel);
 		
+		btnLogin.addActionListener(new LoginListener());
+		
 	}
 	
 	public Dimension getPreferredSize(){
@@ -91,13 +100,25 @@ public class Login extends JPanel{
 		lblErrorMsg.setText(error);
 	}
 	
-	
-	public static void main(String[] args) {
-		JFrame frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(new Login(500, 400));
-		frame.pack();
-		frame.setVisible(true);
+	private class LoginListener implements ActionListener {
+
+		public void actionPerformed(ActionEvent e) {
+			System.out.println("knapp");
+			if(btnLogin == e.getSource()) {
+				ps.showCard("employee");
+			}
+			
+		}
+		
 	}
+	
+	
+//	public static void main(String[] args) {
+//		JFrame frame = new JFrame();
+//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		frame.add(new Login(500, 400));
+//		frame.pack();
+//		frame.setVisible(true);
+//	}
 
 }

@@ -1,8 +1,5 @@
 package controllers;
 
-import gui.CustomerProductSelectionPanel;
-import gui.Login;
-
 import java.awt.CardLayout;
 import java.util.HashMap;
 
@@ -10,6 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import database.DatabaseConnector;
+import gui.CustomerProductSelectionPanel;
+import gui.EmployeeMenuPanel;
+import gui.Login;
 
 public class PanelSwitcher extends JPanel{
 	private HashMap<String, JPanel> panelMap = new HashMap<String, JPanel>();
@@ -20,7 +20,7 @@ public class PanelSwitcher extends JPanel{
 	}
 	
 	private void init(){
-		Login login = new Login(500, 400);
+		Login login = new Login(500, 400, this);
 		panelMap.put("Login", login);
 		this.add(login, "Login");
 		new LoginConnector(new DatabaseConnector("BeaverCoffeeDatabase"), this);
@@ -28,6 +28,10 @@ public class PanelSwitcher extends JPanel{
 		CustomerProductSelectionPanel cpsp = new CustomerProductSelectionPanel(500, 400);
 		panelMap.put("CPSP", cpsp);
 		this.add(cpsp, "CPSP");
+		
+		EmployeeMenuPanel emp = new EmployeeMenuPanel(500,400);
+		panelMap.put("employee", emp);
+		this.add(emp, "employee");
 		
 	}
 	
