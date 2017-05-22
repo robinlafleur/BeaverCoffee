@@ -20,10 +20,12 @@ public class PanelSwitcher extends JPanel{
 	}
 	
 	private void init(){
+		DatabaseConnector dc = new DatabaseConnector("BeaverCoffeeDatabase");
+		
 		Login login = new Login(500, 400);
 		panelMap.put("Login", login);
 		this.add(login, "Login");
-		new LoginConnector(new DatabaseConnector("BeaverCoffeeDatabase"), this);
+		new LoginConnector(dc, this);
 		
 		CustomerProductSelectionPanel cpsp = new CustomerProductSelectionPanel(500, 400);
 		panelMap.put("CPSP", cpsp);
