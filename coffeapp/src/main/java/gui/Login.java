@@ -32,13 +32,10 @@ public class Login extends JPanel{
 	private JComboBox<String> cbUser;
 	private JLabel lblErrorMsg = new JLabel("");
 	
-	private PanelSwitcher ps;
-	
-	public Login(int width, int height, PanelSwitcher switcher) {
+	public Login(int width, int height) {
 		this.width = width;
 		this.height = height;
 		initGUIComponents();
-		this.ps = switcher;
 	}
 	
 	/*
@@ -71,8 +68,6 @@ public class Login extends JPanel{
 		panel.setPreferredSize(new Dimension(400,400));
 		add(panel);
 		
-		btnLogin.addActionListener(new LoginListener());
-		
 	}
 	
 	public Dimension getPreferredSize(){
@@ -98,18 +93,6 @@ public class Login extends JPanel{
 	
 	public void setErrorMsg(String error){
 		lblErrorMsg.setText(error);
-	}
-	
-	private class LoginListener implements ActionListener {
-
-		public void actionPerformed(ActionEvent e) {
-			System.out.println("knapp");
-			if(btnLogin == e.getSource()) {
-				ps.showCard("employee");
-			}
-			
-		}
-		
 	}
 	
 	
