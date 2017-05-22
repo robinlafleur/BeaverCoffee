@@ -15,15 +15,15 @@ public class EmployeeMenuPanel extends MainMenuPanel {
 	}
 	
 	private void initEmployeeMenuGUI() {
+		JButton btnAddCustomer = new JButton("Add customer");
 		JButton btnNewOrder = new JButton("New order");
 		JButton btnUpdateOrder = new JButton("Update order");
-		JLabel lblMenu = new JLabel("Welcome!", SwingConstants.CENTER);
 		btnNewOrder.setPreferredSize(new Dimension(120, 20));
 		btnUpdateOrder.setPreferredSize(new Dimension(120, 20));
-		lblMenu.setPreferredSize(new Dimension(80, 100));
-		menuPanel.add(lblMenu);
+		btnAddCustomer.setPreferredSize(new Dimension(120, 20));
 		menuPanel.add(btnNewOrder);
 		menuPanel.add(btnUpdateOrder);
+		menuPanel.add(btnAddCustomer);
 	}
 	
 	//Test

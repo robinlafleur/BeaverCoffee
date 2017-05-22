@@ -7,7 +7,9 @@ import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class MainMenuPanel extends JPanel {
 	JPanel menuPanel = new JPanel();
@@ -24,9 +26,11 @@ public class MainMenuPanel extends JPanel {
 	private void initGUI() {
 		setPreferredSize(new Dimension(height, width));
 		setLayout(new GridLayout(0,3));
+		JLabel lblMenu = new JLabel("Welcome!", SwingConstants.CENTER);
 		add(menuLeft);
 		add(menuPanel);
 		add(menuRight);
+		menuPanel.add(lblMenu);
 	}
 	
 	//test
