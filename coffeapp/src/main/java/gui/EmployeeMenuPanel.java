@@ -8,6 +8,9 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 public class EmployeeMenuPanel extends MainMenuPanel {
+	JButton btnAddCustomer = new JButton("Add customer");
+	JButton btnNewOrder = new JButton("New order");
+	JButton btnUpdateOrder = new JButton("Update order");
 
 	public EmployeeMenuPanel(int height, int width) {
 		super(height, width);
@@ -15,15 +18,16 @@ public class EmployeeMenuPanel extends MainMenuPanel {
 	}
 	
 	private void initEmployeeMenuGUI() {
-		JButton btnAddCustomer = new JButton("Add customer");
-		JButton btnNewOrder = new JButton("New order");
-		JButton btnUpdateOrder = new JButton("Update order");
 		btnNewOrder.setPreferredSize(new Dimension(120, 20));
 		btnUpdateOrder.setPreferredSize(new Dimension(120, 20));
 		btnAddCustomer.setPreferredSize(new Dimension(120, 20));
 		menuPanel.add(btnNewOrder);
 		menuPanel.add(btnUpdateOrder);
 		menuPanel.add(btnAddCustomer);
+	}
+	
+	public JButton[] getButtons(){
+		return new JButton[]{btnAddCustomer, btnNewOrder, btnUpdateOrder};
 	}
 	
 	//Test

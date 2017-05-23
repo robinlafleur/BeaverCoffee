@@ -22,6 +22,7 @@ public class LoginConnector {
 	private Login loginPnl;
 	private PanelSwitcher ps;
 	private String user = "Employee";
+	private int userS = 0;
 	
 	public LoginConnector(DatabaseConnector dc, PanelSwitcher ps){
 		this.dc = dc;
@@ -47,8 +48,14 @@ public class LoginConnector {
 			
 			if(authorize(username, password)){
 				loginPnl.setErrorMsg("Login Successful");
-				ps.showCard("CPSP");
-				//Switch panel
+				if(userS == 0){
+					ps.showCard("EmployeeMenu");
+				}else if(userS == 1){
+					ps.showCard("ManagerMenu");
+				}else{
+					ps.showCard("EmployerMenu");
+				}
+				
 			}else{
 				loginPnl.setErrorMsg("Authorization failed");
 			}
@@ -89,6 +96,8 @@ public class LoginConnector {
 			@SuppressWarnings("unchecked")
 			JComboBox<String> cb = (JComboBox<String>)e.getSource();
 	        user = (String)cb.getSelectedItem();
+	        userS = cb.getSelectedIndex();
+	        System.out.println(cb.getSelectedIndex());
 		}
 	}
 	
