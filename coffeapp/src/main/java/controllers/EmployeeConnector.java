@@ -14,7 +14,6 @@ public class EmployeeConnector {
 	private DatabaseConnector dc;
 	private PanelSwitcher ps;
 	private EmployeeMenuPanel employee;
-	private CreateCustomerPanel createCustomer;
 	
 	private JButton[] options;
 	
@@ -28,7 +27,6 @@ public class EmployeeConnector {
 			btn.addActionListener(new OptionListener());
 		}
 		
-		createCustomer = (CreateCustomerPanel)ps.getPanel("CreateCustomer");
 	}
 	
 	private class OptionListener implements ActionListener{
@@ -47,12 +45,4 @@ public class EmployeeConnector {
 		}
 	}
 	
-	private class CreateCustomerListener implements ActionListener{
-
-		public void actionPerformed(ActionEvent e) {
-			
-			
-		}
-		
-	}
 }

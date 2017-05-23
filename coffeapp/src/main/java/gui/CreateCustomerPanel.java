@@ -50,6 +50,14 @@ public class CreateCustomerPanel extends JPanel{
 
 	}
 	
+	public JButton getBtnEnter(){
+		return btnEnter;
+	}
+	
+	public String[] getTextFieldData(){
+		return new String[]{tfName.getText(), tfID.getText(), tfAddress.getText(), tfOccupation.getText()};
+	}
+	
 	public Dimension getPreferredSize(){
 		return new Dimension(width, height);
 	}

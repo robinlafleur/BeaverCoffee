@@ -51,6 +51,7 @@ public class PanelSwitcher extends JPanel{
 		CreateCustomerPanel createCustomer = new CreateCustomerPanel(300, 400);
 		panelMap.put("CreateCustomer", createCustomer);
 		this.add(createCustomer, "CreateCustomer");
+		new CustomerHandler(dc, createCustomer);
 		
 	}
 	
