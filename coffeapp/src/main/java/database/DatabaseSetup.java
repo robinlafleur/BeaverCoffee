@@ -61,6 +61,49 @@ public class DatabaseSetup {
 		l.add(man4);
 		col.insertMany(l);
 		
+		
+		dc.setCollection("Products");
+		col = dc.getCollection();
+		col.drop();
+		
+		Document prod1 = new Document("type", "Whole-bean coffee").append("name", "Espresso Roast");
+		Document prod2 = new Document("type", "Whole-bean coffee").append("name", "Whole Bean French Roast");
+		Document prod3 = new Document("type", "Whole-bean coffee").append("name", "Whole Bean Light Roast");
+		Document prod4 = new Document("type", "Other").append("name", "Brewed Coffee");
+		Document prod5 = new Document("type", "Other").append("name", "Espresso");
+		Document prod6 = new Document("type", "Other").append("name", "Cappucino");
+		Document prod7 = new Document("type", "Other").append("name", "Latte");
+		Document prod8 = new Document("type", "Other").append("name", "Hot Chocolate");
+		Document prod9 = new Document("type", "Syrup").append("name", "Vanilla");
+		Document prod10 = new Document("type", "Syrup").append("name", "Caramell");
+		Document prod11 = new Document("type", "Syrup").append("name", "Irish Cream");
+		Document prod12 = new Document("type", "Milk").append("name", "Skim Milk");
+		Document prod13 = new Document("type", "Milk").append("name", "Soy Milk");
+		Document prod14 = new Document("type", "Milk").append("name", "Whole Milk");
+		Document prod15 = new Document("type", "Milk").append("name", "2% Milk");
+		Document prod16 = new Document("type", "Milk").append("name", "Whipped Cream");
+		
+		l = new ArrayList<Document>();
+		l.add(prod1);
+		l.add(prod2);
+		l.add(prod3);
+		l.add(prod4);
+		l.add(prod5);
+		l.add(prod6);
+		l.add(prod7);
+		l.add(prod8);
+		l.add(prod9);
+		l.add(prod10);
+		l.add(prod11);
+		l.add(prod12);
+		l.add(prod13);
+		l.add(prod14);
+		l.add(prod15);
+		l.add(prod16);
+		col.insertMany(l);
+		System.out.println(col.find().first());
+		
+		
 		dc.setCollection("Employer");
 		col = dc.getCollection();
 		col.drop();
