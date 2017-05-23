@@ -1,5 +1,6 @@
 package controllers;
 
+import gui.CreateCustomerPanel;
 import gui.EmployeeMenuPanel;
 
 import java.awt.event.ActionEvent;
@@ -13,6 +14,7 @@ public class EmployeeConnector {
 	private DatabaseConnector dc;
 	private PanelSwitcher ps;
 	private EmployeeMenuPanel employee;
+	private CreateCustomerPanel createCustomer;
 	
 	private JButton[] options;
 	
@@ -25,23 +27,32 @@ public class EmployeeConnector {
 		for(JButton btn : options){
 			btn.addActionListener(new OptionListener());
 		}
+		
+		createCustomer = (CreateCustomerPanel)ps.getPanel("CreateCustomer");
 	}
 	
 	private class OptionListener implements ActionListener{
-
 		public void actionPerformed(ActionEvent e) {
 			checkButton(e.getSource());
 			
 		}
-		
 		private void checkButton(Object o){
 			if(o == options[0]){
-				System.out.println("Add customer clicked");
+				ps.showCard("CreateCustomer");
 			}else if(o == options[1]){
 				System.out.println("new order clicked");
 			}else if(o == options[2]){
 				System.out.println("Update clicked");
 			}
 		}
+	}
+	
+	private class CreateCustomerListener implements ActionListener{
+
+		public void actionPerformed(ActionEvent e) {
+			
+			
+		}
+		
 	}
 }

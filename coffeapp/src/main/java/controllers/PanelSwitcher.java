@@ -1,5 +1,6 @@
 package controllers;
 
+import gui.CreateCustomerPanel;
 import gui.CustomerProductSelectionPanel;
 import gui.EmployeeMenuPanel;
 import gui.EmployerMenuPanel;
@@ -46,6 +47,10 @@ public class PanelSwitcher extends JPanel{
 		ManagerMenuPanel managerMenu = new ManagerMenuPanel(500, 400);
 		panelMap.put("ManagerMenu", managerMenu);
 		this.add(managerMenu, "ManagerMenu");
+		
+		CreateCustomerPanel createCustomer = new CreateCustomerPanel(300, 400);
+		panelMap.put("CreateCustomer", createCustomer);
+		this.add(createCustomer, "CreateCustomer");
 		
 	}
 	
