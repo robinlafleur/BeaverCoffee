@@ -66,22 +66,22 @@ public class DatabaseSetup {
 		col = dc.getCollection();
 		col.drop();
 		
-		Document prod1 = new Document("type", "Whole-bean coffee").append("name", "Espresso Roast");
-		Document prod2 = new Document("type", "Whole-bean coffee").append("name", "Whole Bean French Roast");
-		Document prod3 = new Document("type", "Whole-bean coffee").append("name", "Whole Bean Light Roast");
-		Document prod4 = new Document("type", "Other").append("name", "Brewed Coffee");
-		Document prod5 = new Document("type", "Other").append("name", "Espresso");
-		Document prod6 = new Document("type", "Other").append("name", "Cappucino");
-		Document prod7 = new Document("type", "Other").append("name", "Latte");
-		Document prod8 = new Document("type", "Other").append("name", "Hot Chocolate");
-		Document prod9 = new Document("type", "Syrup").append("name", "Vanilla");
-		Document prod10 = new Document("type", "Syrup").append("name", "Caramell");
-		Document prod11 = new Document("type", "Syrup").append("name", "Irish Cream");
-		Document prod12 = new Document("type", "Milk").append("name", "Skim Milk");
-		Document prod13 = new Document("type", "Milk").append("name", "Soy Milk");
-		Document prod14 = new Document("type", "Milk").append("name", "Whole Milk");
-		Document prod15 = new Document("type", "Milk").append("name", "2% Milk");
-		Document prod16 = new Document("type", "Milk").append("name", "Whipped Cream");
+		Document prod1 = new Document("type", "Whole-bean coffee").append("name", "Espresso Roast").append("quantity", 20);
+		Document prod2 = new Document("type", "Whole-bean coffee").append("name", "Whole Bean French Roast").append("quantity", 10);
+		Document prod3 = new Document("type", "Whole-bean coffee").append("name", "Whole Bean Light Roast").append("quantity", 30);
+		Document prod4 = new Document("type", "Other").append("name", "Brewed Coffee").append("quantity", 30);
+		Document prod5 = new Document("type", "Other").append("name", "Espresso").append("quantity", 30);
+		Document prod6 = new Document("type", "Other").append("name", "Cappucino").append("quantity", 30);
+		Document prod7 = new Document("type", "Other").append("name", "Latte").append("quantity", 30);
+		Document prod8 = new Document("type", "Other").append("name", "Hot Chocolate").append("quantity", 10);
+		Document prod9 = new Document("type", "Syrup").append("name", "Vanilla").append("quantity", 10);
+		Document prod10 = new Document("type", "Syrup").append("name", "Caramell").append("quantity", 10);
+		Document prod11 = new Document("type", "Syrup").append("name", "Irish Cream").append("quantity", 10);
+		Document prod12 = new Document("type", "Milk").append("name", "Skim Milk").append("quantity", 20);
+		Document prod13 = new Document("type", "Milk").append("name", "Soy Milk").append("quantity", 20);
+		Document prod14 = new Document("type", "Milk").append("name", "Whole Milk").append("quantity", 20);
+		Document prod15 = new Document("type", "Milk").append("name", "2% Milk").append("quantity", 20);
+		Document prod16 = new Document("type", "Milk").append("name", "Whipped Cream").append("quantity", 30);
 		
 		l = new ArrayList<Document>();
 		l.add(prod1);
