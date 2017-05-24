@@ -1,12 +1,5 @@
 package controllers;
 
-import gui.CreateCustomerPanel;
-import gui.CustomerProductSelectionPanel;
-import gui.EmployeeMenuPanel;
-import gui.EmployerMenuPanel;
-import gui.Login;
-import gui.ManagerMenuPanel;
-
 import java.awt.CardLayout;
 import java.util.HashMap;
 
@@ -14,6 +7,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import database.DatabaseConnector;
+import gui.CreateCustomerPanel;
+import gui.CustomerDataPanel;
+import gui.CustomerProductSelectionPanel;
+import gui.EmployeeDataPanel;
+import gui.EmployeeMenuPanel;
+import gui.EmployerMenuPanel;
+import gui.Login;
+import gui.ManagerMenuPanel;
+import gui.ProductDataPanel;
 
 public class PanelSwitcher extends JPanel{
 	private HashMap<String, JPanel> panelMap = new HashMap<String, JPanel>();
@@ -52,6 +54,18 @@ public class PanelSwitcher extends JPanel{
 		panelMap.put("CreateCustomer", createCustomer);
 		this.add(createCustomer, "CreateCustomer");
 		new CustomerHandler(dc, createCustomer);
+		
+		CustomerDataPanel customerData = new CustomerDataPanel(500, 400);
+		panelMap.put("CustomerData", customerData);
+		this.add(customerData, "CustomerData");
+		
+		ProductDataPanel productData = new ProductDataPanel(500,400);
+		panelMap.put("ProductData", productData);
+		this.add(productData, "ProductData");
+		
+		EmployeeDataPanel employeeData = new EmployeeDataPanel(500, 400);
+		panelMap.put("EmployeeData", employeeData);
+		this.add(employeeData, "EmployeeData");
 		
 	}
 	
