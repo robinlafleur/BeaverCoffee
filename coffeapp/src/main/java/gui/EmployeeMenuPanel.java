@@ -21,9 +21,9 @@ public class EmployeeMenuPanel extends MainMenuPanel {
 		btnNewOrder.setPreferredSize(new Dimension(120, 20));
 		btnUpdateOrder.setPreferredSize(new Dimension(120, 20));
 		btnAddCustomer.setPreferredSize(new Dimension(120, 20));
-		menuPanel.add(btnNewOrder);
-		menuPanel.add(btnUpdateOrder);
-		menuPanel.add(btnAddCustomer);
+		getMenuPanel().add(btnNewOrder);
+		getMenuPanel().add(btnUpdateOrder);
+		getMenuPanel().add(btnAddCustomer);
 	}
 	
 	public JButton[] getButtons(){

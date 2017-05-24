@@ -36,15 +36,17 @@ public class CustomerHandler {
 		dc.printTest();
 	}
 	
-	public void updateCustomer(String name, String ID, String address){
+	public void updateCustomer(String[] data){
 		dc.setCollection("Customers");
 		MongoCollection<Document> mc = dc.getCollection();
 		
-		Document d1 = new Document("name", name);
-		Document d2 = new Document("$set", new Document("ID", ID));
-		Document d3 = new Document("$set", new Document("address", address));
+		Document d1 = new Document("name", data[0]);
+		Document d2 = new Document("$set", new Document("ID", data[1]));
+		Document d3 = new Document("$set", new Document("address", data[2]));
+		Document d4 = new Document("$set", new Document("Occupation", data[3]));
 		mc.updateOne(d1, d2);
 		mc.updateOne(d1, d3);
+		mc.updateOne(d1, d4);
 	}
 	
 	private class CustomerInformationListener implements ActionListener{

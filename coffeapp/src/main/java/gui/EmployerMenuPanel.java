@@ -12,7 +12,7 @@ public class EmployerMenuPanel extends MainMenuPanel{
 	
 	private void initEmployerMenuGUI() {
 		JButton btnEmployeeInfo = new JButton("Employee info");
-		menuPanel.add(btnEmployeeInfo);
+		getMenuPanel().add(btnEmployeeInfo);
 	}
 	
 	//Test

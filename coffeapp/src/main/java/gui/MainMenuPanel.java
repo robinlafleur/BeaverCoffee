@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 public class MainMenuPanel extends JPanel {
-	protected JPanel menuPanel = new JPanel();
+	private JPanel menuPanel = new JPanel();
 	private JPanel menuLeft = new JPanel();
 	private JPanel menuRight = new JPanel();
 	private int height, width;
@@ -33,4 +33,7 @@ public class MainMenuPanel extends JPanel {
 		menuPanel.add(lblMenu);
 	}
 	
+	public JPanel getMenuPanel() {
+		return menuPanel;
+	}
 }

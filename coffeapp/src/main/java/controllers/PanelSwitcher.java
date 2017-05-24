@@ -19,6 +19,7 @@ import gui.ProductDataPanel;
 
 public class PanelSwitcher extends JPanel{
 	private HashMap<String, JPanel> panelMap = new HashMap<String, JPanel>();
+	private CustomerHandler customerHandler;
 	
 	public PanelSwitcher(){
 		this.setLayout(new CardLayout());
@@ -57,16 +58,16 @@ public class PanelSwitcher extends JPanel{
 		EmployeeDataPanel employeeData = new EmployeeDataPanel(500, 400);
 		panelMap.put("EmployeeData", employeeData);
 		this.add(employeeData, "EmployeeData");
-				
-		ManagerMenuPanel managerMenu = new ManagerMenuPanel(500, 400);
-		panelMap.put("ManagerMenu", managerMenu);
-		this.add(managerMenu, "ManagerMenu");
-		new ManagerConnector(dc, this);
 		
 		CreateCustomerPanel createCustomer = new CreateCustomerPanel(300, 400);
 		panelMap.put("CreateCustomer", createCustomer);
 		this.add(createCustomer, "CreateCustomer");
-		new CustomerHandler(dc, createCustomer);
+		customerHandler = new CustomerHandler(dc, createCustomer);
+				
+		ManagerMenuPanel managerMenu = new ManagerMenuPanel(500, 400);
+		panelMap.put("ManagerMenu", managerMenu);
+		this.add(managerMenu, "ManagerMenu");
+		new ManagerConnector(dc, this, customerHandler);
 		
 	}
 	

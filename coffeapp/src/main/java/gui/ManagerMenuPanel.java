@@ -20,9 +20,9 @@ public class ManagerMenuPanel extends MainMenuPanel{
 		btnCustomerData.setPreferredSize(new Dimension(120, 20));
 		btnProductData.setPreferredSize(new Dimension(120, 20));
 		
-		menuPanel.add(btnEmployeeData);
-		menuPanel.add(btnCustomerData);
-		menuPanel.add(btnProductData);
+		getMenuPanel().add(btnEmployeeData);
+		getMenuPanel().add(btnCustomerData);
+		getMenuPanel().add(btnProductData);
 	}
 	
 	public JButton[] getButtons() {

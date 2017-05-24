@@ -19,14 +19,17 @@ public class ManagerConnector {
 	private PanelSwitcher ps;
 	private ManagerMenuPanel manager;
 	private CustomerDataPanel cdp;
+	private CustomerHandler customerHandler;
 	
 	private JButton[] options;
 	private JButton search;
 	private JButton[] customerBtn;
 	
-	public ManagerConnector(DatabaseConnector dc, PanelSwitcher ps) {
+	
+	public ManagerConnector(DatabaseConnector dc, PanelSwitcher ps, CustomerHandler customerHandler) {
 		this.dc = dc;
 		this.ps = ps;
+		this.customerHandler = customerHandler;
 		
 		manager = (ManagerMenuPanel)ps.getPanel("ManagerMenu");
 		cdp = (CustomerDataPanel)ps.getPanel("CustomerData");
@@ -80,19 +83,9 @@ public class ManagerConnector {
 		private void checkButton(Object o) {
 			String[] customerInfo = cdp.getNewCustomer();
 			if(o == customerBtn[0]) {
-				dc.setCollection("Customers");
-				MongoCollection<Document> mc = dc.getCollection();
-				Document d = new Document("name", customerInfo[0]).append("ID", customerInfo[1]).append("address", customerInfo[2]);
-				mc.insertOne(d);
-				System.out.println(mc.find(eq("name", "Nils Nilsson")).first());
+				customerHandler.addCustomer(customerInfo);
 			} else if(o == customerBtn[1]) {
-				dc.setCollection("Customers");
-				MongoCollection<Document> mc = dc.getCollection();
-				Document d1 = new Document("name", customerInfo[0]);
-				Document d2 = new Document("$set", new Document("ID", customerInfo[1]));
-				Document d3 = new Document("$set", new Document("address", customerInfo[2]));
-				mc.updateOne(d1, d2);
-				mc.updateOne(d1, d3);
+				customerHandler.updateCustomer(customerInfo);
 			}
 		}
 	}
