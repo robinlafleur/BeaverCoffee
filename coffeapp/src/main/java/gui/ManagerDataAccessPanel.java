@@ -28,6 +28,7 @@ public class ManagerDataAccessPanel extends JPanel {
 		taInfo.setPreferredSize(new Dimension(width, height/3));
 		tfSearch.setPreferredSize(new Dimension(width/2, 30));
 		btnSearch.setPreferredSize(new Dimension(120, 30));
+		taInfo.setLineWrap(true);
 		
 		add(lblTop);
 		add(tfSearch);
@@ -37,5 +38,17 @@ public class ManagerDataAccessPanel extends JPanel {
 
 	public void setTopLabel(String name) {
 		lblTop.setText(name);
+	}
+	
+	public JButton getButton() {
+		return btnSearch;
+	}
+	
+	public String getName() {
+		return tfSearch.getText();
+	}
+	
+	public void updateInfo(String info) {
+		taInfo.setText(info);
 	}
 }

@@ -43,6 +43,14 @@ public class CustomerDataPanel extends ManagerDataAccessPanel {
 		btnPanel.add(btnUpdate);
 	}
 	
+	public String[] getNewCustomer() {
+		return new String[]{tfName.getText(), tfID.getText(), tfAddress.getText()};
+	}
+	
+	public JButton[] getCustomerButtons() {
+		return new JButton[] {btnCreate, btnUpdate};
+	}
+	
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

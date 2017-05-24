@@ -12,9 +12,9 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 public class MainMenuPanel extends JPanel {
-	JPanel menuPanel = new JPanel();
-	JPanel menuLeft = new JPanel();
-	JPanel menuRight = new JPanel();
+	protected JPanel menuPanel = new JPanel();
+	private JPanel menuLeft = new JPanel();
+	private JPanel menuRight = new JPanel();
 	private int height, width;
 	
 	public MainMenuPanel(int height, int width) {
@@ -33,12 +33,4 @@ public class MainMenuPanel extends JPanel {
 		menuPanel.add(lblMenu);
 	}
 	
-	//test
-	public static void main(String[] args) {
-		JFrame frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(new MainMenuPanel(500, 400));
-		frame.pack();
-		frame.setVisible(true);
-	}
 }

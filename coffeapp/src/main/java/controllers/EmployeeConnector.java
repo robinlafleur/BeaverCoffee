@@ -1,6 +1,5 @@
 package controllers;
 
-import gui.CreateCustomerPanel;
 import gui.EmployeeMenuPanel;
 
 import java.awt.event.ActionEvent;
@@ -31,8 +30,7 @@ public class EmployeeConnector {
 	
 	private class OptionListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
-			checkButton(e.getSource());
-			
+			checkButton(e.getSource());			
 		}
 		private void checkButton(Object o){
 			if(o == options[0]){

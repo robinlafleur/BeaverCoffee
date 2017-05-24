@@ -8,9 +8,9 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 public class EmployeeMenuPanel extends MainMenuPanel {
-	JButton btnAddCustomer = new JButton("Add customer");
-	JButton btnNewOrder = new JButton("New order");
-	JButton btnUpdateOrder = new JButton("Update order");
+	private JButton btnAddCustomer = new JButton("Add customer");
+	private JButton btnNewOrder = new JButton("New order");
+	private JButton btnUpdateOrder = new JButton("Update order");
 
 	public EmployeeMenuPanel(int height, int width) {
 		super(height, width);

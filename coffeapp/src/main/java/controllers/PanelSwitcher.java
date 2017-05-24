@@ -46,15 +46,6 @@ public class PanelSwitcher extends JPanel{
 		panelMap.put("EmpoyerMenu", employerMenu);
 		this.add(employerMenu, "EmployerMenu");
 		
-		ManagerMenuPanel managerMenu = new ManagerMenuPanel(500, 400);
-		panelMap.put("ManagerMenu", managerMenu);
-		this.add(managerMenu, "ManagerMenu");
-		
-		CreateCustomerPanel createCustomer = new CreateCustomerPanel(300, 400);
-		panelMap.put("CreateCustomer", createCustomer);
-		this.add(createCustomer, "CreateCustomer");
-		new CustomerHandler(dc, createCustomer);
-		
 		CustomerDataPanel customerData = new CustomerDataPanel(500, 400);
 		panelMap.put("CustomerData", customerData);
 		this.add(customerData, "CustomerData");
@@ -66,6 +57,16 @@ public class PanelSwitcher extends JPanel{
 		EmployeeDataPanel employeeData = new EmployeeDataPanel(500, 400);
 		panelMap.put("EmployeeData", employeeData);
 		this.add(employeeData, "EmployeeData");
+				
+		ManagerMenuPanel managerMenu = new ManagerMenuPanel(500, 400);
+		panelMap.put("ManagerMenu", managerMenu);
+		this.add(managerMenu, "ManagerMenu");
+		new ManagerConnector(dc, this);
+		
+		CreateCustomerPanel createCustomer = new CreateCustomerPanel(300, 400);
+		panelMap.put("CreateCustomer", createCustomer);
+		this.add(createCustomer, "CreateCustomer");
+		new CustomerHandler(dc, createCustomer);
 		
 	}
 	
