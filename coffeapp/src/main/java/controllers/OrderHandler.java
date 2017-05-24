@@ -1,15 +1,18 @@
 package controllers;
 
+import static com.mongodb.client.model.Filters.eq;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import org.bson.Document;
 
 import com.mongodb.client.MongoCollection;
 
 import database.DatabaseConnector;
-
-import static com.mongodb.client.model.Filters.*;
 
 public class OrderHandler {
 	private DatabaseConnector dc;
@@ -18,6 +21,8 @@ public class OrderHandler {
 	public OrderHandler(DatabaseConnector dc, PanelSwitcher ps){
 		this.dc = dc;
 		this.ps = ps;
+		
+		new PlaceOrderListener();
 	}
 	
 	public MongoCollection<Document> getProducts(){
@@ -43,10 +48,36 @@ public class OrderHandler {
 	}
 	
 	private class PlaceOrderListener implements ActionListener{
-
+		
+		public PlaceOrderListener(){
+			createOrder();
+		}
+		
 		public void actionPerformed(ActionEvent e) {
 			
 			
+		}
+		
+		private void createOrder(){
+			dc.setCollection("Orders");
+			MongoCollection<Document> mc = dc.getCollection();
+			
+			Document d = new Document("customerID", "asdsadasd");
+			HashMap<String, Integer> products = handleInput();
+			
+			Iterator it = products.entrySet().iterator();
+			while(it.hasNext()){
+				Map.Entry pair = (Map.Entry)it.next();
+				System.out.println(pair.getKey() + ": " +pair.getValue());
+			}
+			
+		}
+		
+		private HashMap<String, Integer> handleInput(){
+			HashMap<String, Integer> products = new HashMap<String, Integer>();
+			products.put("coffee", 10);
+			products.put("some other", 2);
+			return products;
 		}
 	}
 	
