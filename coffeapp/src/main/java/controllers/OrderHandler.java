@@ -38,20 +38,44 @@ public class OrderHandler {
 		int curQuantity = d.getInteger("quantity");
 		
 		if(quantityRemoved <= curQuantity){
-			Document d1 = new Document("name", name);
-			Document d2 = new Document("$set", new Document("quantity", curQuantity-quantityRemoved));
-			mc.updateOne(d1, d2);
+			updateProduct(name, new Document("quantity", curQuantity-quantityRemoved));
 			return true;
 		}
 		
 		return false;
 	}
 	
-	private class PlaceOrderListener implements ActionListener{
+	public void updateProductQuantityManager(String name, int quiantity){
+		dc.setCollection("Products");
+		MongoCollection<Document> mc = dc.getCollection();
+		updateProduct(name, new Document("quantity", quiantity));
+	}
+	
+	public void updateProduct(String name, Document d2){
+		dc.setCollection("Products");
+		MongoCollection<Document> mc = dc.getCollection();
 		
-		public PlaceOrderListener(){
-			createOrder();
-		}
+		Document d1 = new Document("name", name);
+		Document change = new Document("$set", d2);
+		mc.updateOne(d1, change);
+		
+	}
+	
+	public void deleteProduct(String name){
+		dc.setCollection("Products");
+		MongoCollection<Document> mc = dc.getCollection();
+		
+		mc.deleteOne(new Document("name", name));
+	}
+	
+	public void updateOrder(String customerID){
+		dc.setCollection("Orders");
+		MongoCollection<Document> mc = dc.getCollection();
+		
+		
+	}
+	
+	private class PlaceOrderListener implements ActionListener{
 		
 		public void actionPerformed(ActionEvent e) {
 			
@@ -69,6 +93,7 @@ public class OrderHandler {
 			while(it.hasNext()){
 				Map.Entry pair = (Map.Entry)it.next();
 				System.out.println(pair.getKey() + ": " +pair.getValue());
+				updateProductQuantity((String)pair.getKey(), (Integer)pair.getValue());
 			}
 			
 		}
