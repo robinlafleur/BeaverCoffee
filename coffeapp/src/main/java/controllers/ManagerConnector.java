@@ -13,7 +13,6 @@ import org.bson.Document;
 import com.mongodb.client.MongoCollection;
 
 import database.DatabaseConnector;
-import gui.EmployeeDataPanel;
 import gui.ManagerDataAccessPanel;
 import gui.ManagerMenuPanel;
 
@@ -23,9 +22,7 @@ public class ManagerConnector {
 	private ManagerMenuPanel manager;
 	private ManagerDataAccessPanel managerDataPanel;
 	private CustomerHandler customerHandler;
-	private EmployeeDataPanel edp;
-	private Object dataPanel;
-	private String mongoCollection;
+	private String mongoCollection = "Customers";
 	private JComboBox<String> itemSelection;
 	
 	private JButton menuBtn;
@@ -58,7 +55,8 @@ public class ManagerConnector {
 	private class ComboBoxListener implements ActionListener {
 
 		public void actionPerformed(ActionEvent e) {
-			JComboBox<String> selection = (JComboBox)e.getSource();
+			@SuppressWarnings("unchecked")
+			JComboBox<String> selection = (JComboBox<String>)e.getSource();
 			mongoCollection = (String) selection.getSelectedItem();		
 			
 		}
@@ -96,11 +94,21 @@ public class ManagerConnector {
 			checkButton(e.getSource());
 		}
 		private void checkButton(Object o) {
-			String[] customerInfo = managerDataPanel.getNewInfo();
-			if(o == updateCreateBtn[0]) {
-				customerHandler.addCustomer(customerInfo);
-			} else if(o == updateCreateBtn[1]) {
-				customerHandler.updateCustomer(customerInfo);
+			String[] info = managerDataPanel.getNewInfo();
+			if(mongoCollection.equals("Customers") && info !=null) {
+				if(o == updateCreateBtn[0]) {
+					customerHandler.addCustomer(info);
+				} else if(o == updateCreateBtn[1]) {
+					customerHandler.updateCustomer(info);
+				}
+			}else if(mongoCollection.equals("Employee") && info !=null) {
+				/*
+				 * TODO Create employeeHandler class with add/update methods
+				 */
+			} else if(mongoCollection.equals("Products") && info != null){
+				/*
+				 * TODO Create productHandler class with add/update methods
+				 */
 			}
 		}
 	}

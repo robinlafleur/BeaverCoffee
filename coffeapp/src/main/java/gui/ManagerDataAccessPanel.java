@@ -21,7 +21,7 @@ public class ManagerDataAccessPanel extends JPanel {
 	private JButton btnCreate = new JButton("Create");
 	private JButton btnUpdate = new JButton("Update");
 	private JPanel btnPanel = new JPanel();
-	private String[] availableSelection = {"Customer", "Employee", "Products" };
+	private String[] availableSelection = {"Customers", "Employee", "Products" };
 	private JComboBox<String> selection = new JComboBox<String>(availableSelection);
 	private JTextField tfOccupation = new JTextField("Type customer occupation here");
 	private JPanel pnlTop = new JPanel();
@@ -86,7 +86,7 @@ public class ManagerDataAccessPanel extends JPanel {
 	}
 	
 	public void updateInfo(String info) {
-		taInfo.append(info);
+		taInfo.setText(info);
 	}
 	
 	public static void main(String[] args) {
