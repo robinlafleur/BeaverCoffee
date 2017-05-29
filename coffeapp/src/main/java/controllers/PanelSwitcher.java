@@ -8,14 +8,12 @@ import javax.swing.JPanel;
 
 import database.DatabaseConnector;
 import gui.CreateCustomerPanel;
-import gui.CustomerDataPanel;
 import gui.CustomerProductSelectionPanel;
-import gui.EmployeeDataPanel;
 import gui.EmployeeMenuPanel;
 import gui.EmployerMenuPanel;
 import gui.Login;
+import gui.ManagerDataAccessPanel;
 import gui.ManagerMenuPanel;
-import gui.ProductDataPanel;
 
 public class PanelSwitcher extends JPanel{
 	private HashMap<String, JPanel> panelMap = new HashMap<String, JPanel>();
@@ -47,17 +45,9 @@ public class PanelSwitcher extends JPanel{
 		panelMap.put("EmpoyerMenu", employerMenu);
 		this.add(employerMenu, "EmployerMenu");
 		
-		CustomerDataPanel customerData = new CustomerDataPanel(500, 400);
-		panelMap.put("CustomerData", customerData);
-		this.add(customerData, "CustomerData");
-		
-		ProductDataPanel productData = new ProductDataPanel(500,400);
-		panelMap.put("ProductData", productData);
-		this.add(productData, "ProductData");
-		
-		EmployeeDataPanel employeeData = new EmployeeDataPanel(500, 400);
-		panelMap.put("EmployeeData", employeeData);
-		this.add(employeeData, "EmployeeData");
+		ManagerDataAccessPanel managerData = new ManagerDataAccessPanel(500, 400);
+		panelMap.put("ManagerData", managerData);
+		this.add(managerData, "ManagerData");
 		
 		CreateCustomerPanel createCustomer = new CreateCustomerPanel(300, 400);
 		panelMap.put("CreateCustomer", createCustomer);

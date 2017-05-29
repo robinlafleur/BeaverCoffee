@@ -6,26 +6,20 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class ManagerMenuPanel extends MainMenuPanel{
-	private JButton btnEmployeeData = new JButton("Employee data");
-	private JButton btnCustomerData = new JButton("Customer data");
-	private JButton btnProductData = new JButton("Product data");
-	private JButton[] btns = { btnEmployeeData, btnCustomerData, btnProductData };
+	private JButton btnData = new JButton("Get data");
+
 	public ManagerMenuPanel(int height, int width) {
 		super(height, width);
 		initManagerMenuGUI();
 	}
 	
 	private void initManagerMenuGUI() {		
-		btnEmployeeData.setPreferredSize(new Dimension(120, 20));
-		btnCustomerData.setPreferredSize(new Dimension(120, 20));
-		btnProductData.setPreferredSize(new Dimension(120, 20));
+		btnData.setPreferredSize(new Dimension(120, 20));
 		
-		getMenuPanel().add(btnEmployeeData);
-		getMenuPanel().add(btnCustomerData);
-		getMenuPanel().add(btnProductData);
+		getMenuPanel().add(btnData);
 	}
 	
-	public JButton[] getButtons() {
-		return btns;
+	public JButton getButton() {
+		return btnData;
 	}
 }

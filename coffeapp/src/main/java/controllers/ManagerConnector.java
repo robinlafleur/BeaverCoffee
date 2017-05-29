@@ -1,29 +1,36 @@
 package controllers;
 
+import static com.mongodb.client.model.Filters.eq;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 
 import org.bson.Document;
 
 import com.mongodb.client.MongoCollection;
-import static com.mongodb.client.model.Filters.eq;
 
 import database.DatabaseConnector;
-import gui.CustomerDataPanel;
+import gui.EmployeeDataPanel;
+import gui.ManagerDataAccessPanel;
 import gui.ManagerMenuPanel;
 
 public class ManagerConnector {
 	private DatabaseConnector dc;
 	private PanelSwitcher ps;
 	private ManagerMenuPanel manager;
-	private CustomerDataPanel cdp;
+	private ManagerDataAccessPanel managerDataPanel;
 	private CustomerHandler customerHandler;
+	private EmployeeDataPanel edp;
+	private Object dataPanel;
+	private String mongoCollection;
+	private JComboBox<String> itemSelection;
 	
-	private JButton[] options;
+	private JButton menuBtn;
 	private JButton search;
-	private JButton[] customerBtn;
+	private JButton[] updateCreateBtn;
 	
 	
 	public ManagerConnector(DatabaseConnector dc, PanelSwitcher ps, CustomerHandler customerHandler) {
@@ -32,59 +39,67 @@ public class ManagerConnector {
 		this.customerHandler = customerHandler;
 		
 		manager = (ManagerMenuPanel)ps.getPanel("ManagerMenu");
-		cdp = (CustomerDataPanel)ps.getPanel("CustomerData");
-		options = manager.getButtons();
+		managerDataPanel = (ManagerDataAccessPanel)ps.getPanel("ManagerData");
+		menuBtn = manager.getButton();
+		menuBtn.addActionListener(new MainMenuListener());
 		
-		search = cdp.getButton();
-		customerBtn = cdp.getCustomerButtons();
-		search.addActionListener(new CustomerDataListener());
-		for(JButton btn : options) {
-			btn.addActionListener(new MainMenuListener());
+		search = managerDataPanel.getButton();
+		updateCreateBtn = managerDataPanel.getUpdateCreateButtons();
+		search.addActionListener(new DataListener());
+		itemSelection = managerDataPanel.getSelection();
+		itemSelection.addActionListener(new ComboBoxListener());
+		
+		
+		for(JButton btn : updateCreateBtn) {
+			btn.addActionListener(new CreateAndUpdateListener());
+		}
+	}
+	
+	private class ComboBoxListener implements ActionListener {
+
+		public void actionPerformed(ActionEvent e) {
+			JComboBox<String> selection = (JComboBox)e.getSource();
+			mongoCollection = (String) selection.getSelectedItem();		
+			
 		}
 		
-		for(JButton btn : customerBtn) {
-			btn.addActionListener(new CustomerCreateAndUpdateListener());
-		}
 	}
 	
 	private class MainMenuListener implements ActionListener {
 
 		public void actionPerformed(ActionEvent e) {
-			checkButton(e.getSource());			
-		}
-		
-		private void checkButton(Object o) {
-			if(o == options[0]) {
-				ps.showCard("EmployeeData");
-			} else if(o == options[1]) {
-				ps.showCard("CustomerData");
-			} else if(o == options[2]) {
-				ps.showCard("ProductData");
-			}
+			if(menuBtn == e.getSource()) {
+				ps.showCard("ManagerData");
+			}		
 		}		
 	}
 	
-	private class CustomerDataListener implements ActionListener {
+	private class DataListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if(search == e.getSource()) {
-				String name = cdp.getName();
-				dc.setCollection("Customers");
+				String name = managerDataPanel.getName();
+				dc.setCollection(mongoCollection);
 				MongoCollection<Document> mc = dc.getCollection();
 				Document d = mc.find(eq("name", name)).first();
-				cdp.updateInfo(d.toString());
+				try {
+					managerDataPanel.updateInfo("Name: "+d.getString("name")+ "\nAddress: " +
+							d.getString("address") + "\nID: " + d.getString("ID"));
+				} catch(Exception ex) {
+					managerDataPanel.updateInfo(name + " does not exist");
+				}				
 			}
 		}
 	}
 	
-	private class CustomerCreateAndUpdateListener implements ActionListener {
+	private class CreateAndUpdateListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			checkButton(e.getSource());
 		}
 		private void checkButton(Object o) {
-			String[] customerInfo = cdp.getNewCustomer();
-			if(o == customerBtn[0]) {
+			String[] customerInfo = managerDataPanel.getNewInfo();
+			if(o == updateCreateBtn[0]) {
 				customerHandler.addCustomer(customerInfo);
-			} else if(o == customerBtn[1]) {
+			} else if(o == updateCreateBtn[1]) {
 				customerHandler.updateCustomer(customerInfo);
 			}
 		}

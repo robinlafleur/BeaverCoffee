@@ -25,7 +25,7 @@ public class CustomerDataPanel extends ManagerDataAccessPanel {
 	}
 	
 	private void initCDPanel() {
-		setTopLabel("Customer data");
+//		setTopLabel("Customer data");
 		Dimension tfSize = new Dimension(width/2, 30);
 		Dimension btnSize = new Dimension(120, 30);
 		

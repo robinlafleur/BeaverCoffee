@@ -23,7 +23,6 @@ public class ProductDataPanel extends ManagerDataAccessPanel {
 	}
 	
 	private void initPDPanel() {
-		setTopLabel("Product data");
 		Dimension tfSize = new Dimension(width/2, 30);
 		Dimension btnSize = new Dimension(120, 30);
 		

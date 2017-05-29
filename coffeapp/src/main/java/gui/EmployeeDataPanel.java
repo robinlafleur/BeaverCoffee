@@ -24,7 +24,7 @@ public class EmployeeDataPanel extends ManagerDataAccessPanel{
 	}
 	
 	private void initEDPanel() {
-		setTopLabel("Employee data");
+//		setTopLabel("Employee data");
 		Dimension tfSize = new Dimension(width/2, 30);
 		Dimension btnSize = new Dimension(120, 30);
 		
@@ -42,6 +42,8 @@ public class EmployeeDataPanel extends ManagerDataAccessPanel{
 		btnPanel.add(btnCreate);
 		btnPanel.add(btnUpdate);
 	}
+	
+	
 	
 	//Test
 	public static void main(String[] args) {
