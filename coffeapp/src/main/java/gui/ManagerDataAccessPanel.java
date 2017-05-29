@@ -126,12 +126,4 @@ public class ManagerDataAccessPanel extends JPanel {
 		revalidate();
 		repaint();
 	}
-	
-	public static void main(String[] args) {
-		JFrame frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(new ManagerDataAccessPanel(500, 400));
-		frame.pack();
-		frame.setVisible(true);
-	}
 }

@@ -15,13 +15,4 @@ public class EmployerMenuPanel extends MainMenuPanel{
 		getMenuPanel().add(btnEmployeeInfo);
 	}
 	
-	//Test
-	public static void main(String[] args) {
-		JFrame frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(new EmployerMenuPanel(500, 400));
-		frame.pack();
-		frame.setVisible(true);
-	}
-
 }

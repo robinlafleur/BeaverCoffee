@@ -18,6 +18,7 @@ import gui.ManagerMenuPanel;
 public class PanelSwitcher extends JPanel{
 	private HashMap<String, JPanel> panelMap = new HashMap<String, JPanel>();
 	private CustomerHandler customerHandler;
+	private EmployeeHandler employeeHandler;
 	
 	public PanelSwitcher(){
 		this.setLayout(new CardLayout());
@@ -26,6 +27,7 @@ public class PanelSwitcher extends JPanel{
 	
 	private void init(){
 		DatabaseConnector dc = new DatabaseConnector("BeaverCoffeeDatabase");
+		this.employeeHandler = new EmployeeHandler(dc, this);
 		
 		Login login = new Login(500, 400);
 		panelMap.put("Login", login);
@@ -57,7 +59,7 @@ public class PanelSwitcher extends JPanel{
 		ManagerMenuPanel managerMenu = new ManagerMenuPanel(500, 400);
 		panelMap.put("ManagerMenu", managerMenu);
 		this.add(managerMenu, "ManagerMenu");
-		new ManagerConnector(dc, this, customerHandler);
+		new ManagerConnector(dc, this, customerHandler, employeeHandler);
 		
 	}
 	

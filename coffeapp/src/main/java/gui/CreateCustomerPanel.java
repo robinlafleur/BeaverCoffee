@@ -61,13 +61,4 @@ public class CreateCustomerPanel extends JPanel{
 	public Dimension getPreferredSize(){
 		return new Dimension(width, height);
 	}
-	
-	public static void main(String[] args){
-		JFrame frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		frame.add(new CreateCustomerPanel(500, 400));
-		frame.pack();
-		frame.setVisible(true);
-	}
 }

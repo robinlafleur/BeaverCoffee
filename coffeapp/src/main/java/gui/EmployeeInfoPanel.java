@@ -35,13 +35,4 @@ public class EmployeeInfoPanel extends JPanel {
 		add(spComment);
 		add(btnSubmit);
 	}
-	
-	//Test
-	public static void main(String[] args) {
-		JFrame frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(new EmployeeInfoPanel(500, 400));
-		frame.pack();
-		frame.setVisible(true);
-	}
 }

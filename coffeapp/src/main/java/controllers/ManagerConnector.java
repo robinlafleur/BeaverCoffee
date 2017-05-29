@@ -23,6 +23,7 @@ public class ManagerConnector {
 	private ManagerDataAccessPanel managerDataPanel;
 	private CustomerHandler customerHandler;
 	private OrderHandler orderHandler;
+	private EmployeeHandler employeeHandler;
 	private String mongoCollection = "Customers";
 	private JComboBox<String> itemSelection;
 	
@@ -31,10 +32,11 @@ public class ManagerConnector {
 	private JButton[] updateCreateBtn;
 	
 	
-	public ManagerConnector(DatabaseConnector dc, PanelSwitcher ps, CustomerHandler customerHandler) {
+	public ManagerConnector(DatabaseConnector dc, PanelSwitcher ps, CustomerHandler customerHandler, EmployeeHandler employeeHandler) {
 		this.dc = dc;
 		this.ps = ps;
 		this.customerHandler = customerHandler;
+		this.employeeHandler = employeeHandler;
 		
 		manager = (ManagerMenuPanel)ps.getPanel("ManagerMenu");
 		managerDataPanel = (ManagerDataAccessPanel)ps.getPanel("ManagerData");
@@ -85,15 +87,26 @@ public class ManagerConnector {
 		public void actionPerformed(ActionEvent e) {
 			if(search == e.getSource()) {
 				String name = managerDataPanel.getName();
-				dc.setCollection(mongoCollection);
-				MongoCollection<Document> mc = dc.getCollection();
-				Document d = mc.find(eq("name", name)).first();
-				try {
-					managerDataPanel.updateInfo("Name: "+d.getString("name")+ "\nAddress: " +
-							d.getString("address") + "\nID: " + d.getString("ID"));
-				} catch(Exception ex) {
-					managerDataPanel.updateInfo(name + " does not exist");
-				}				
+				
+				if(mongoCollection.equals("Customers")) {
+					MongoCollection<Document> mc = customerHandler.getCustomers();
+					Document d = mc.find(eq("name", name)).first();
+					try {
+						managerDataPanel.updateInfo("Name: "+d.getString("name")+ "\nAddress: " +
+								d.getString("address") + "\nID: " + d.getString("ID") + "\nOccupation: " +d.getString("occupation"));
+					} catch(Exception ex) {
+						managerDataPanel.updateInfo(name + " does not exist");
+					}	
+				}else if(mongoCollection.equals("Employee")) {
+					MongoCollection<Document> mc = employeeHandler.getEmployees();
+					Document d = mc.find(eq("name", name)).first();
+					try {
+						managerDataPanel.updateInfo("Name: "+d.getString("name")+ "\nAddress: " +
+								d.getString("address") + "\nID: " + d.getString("ID") + "\nComment: " +d.getString("comment"));
+					} catch(Exception ex) {
+						managerDataPanel.updateInfo(name + " does not exist");
+					}	
+				}
 			}
 		}
 	}

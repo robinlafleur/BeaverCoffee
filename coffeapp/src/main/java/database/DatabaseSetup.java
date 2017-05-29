@@ -20,10 +20,10 @@ public class DatabaseSetup {
 		MongoCollection<Document> col = dc.getCollection();
 		col.drop();
 		
-		Document cust1 = new Document("name", "John Smith").append("ID", "1234567").append("address", "Street 1, 23456, Chicago");
-		Document cust2 = new Document("name", "Jane Doe").append("ID", "23451").append("address", "Ave 1, 34567, London");
-		Document cust3 = new Document("name", "Gun Gunnarsson").append("ID", "640101-1234").append("address", "Malm�gatan 1, 12345, Malmö");
-		Document cust4 = new Document("name", "John Johnsson").append("ID", "7654321").append("address", "Colonoscostreet, 13456, Minneapolis");
+		Document cust1 = new Document("name", "John Smith").append("ID", "1234567").append("address", "Street 1, 23456, Chicago").append("occupation", "Plummer");
+		Document cust2 = new Document("name", "Jane Doe").append("ID", "23451").append("address", "Ave 1, 34567, London").append("occupation", "Programmer");
+		Document cust3 = new Document("name", "Gun Gunnarsson").append("ID", "640101-1234").append("address", "Malm�gatan 1, 12345, Malmö").append("occupation", "Carpenter");
+		Document cust4 = new Document("name", "John Johnsson").append("ID", "7654321").append("address", "Colonoscostreet, 13456, Minneapolis").append("occupation", "POTUS");
 		List<Document> l = new ArrayList<Document>();
 		l.add(cust1);
 		l.add(cust2);

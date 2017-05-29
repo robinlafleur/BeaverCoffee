@@ -26,6 +26,11 @@ public class CustomerHandler {
 		cc.getBtnEnter().addActionListener(new CustomerInformationListener());
 	}
 	
+	public MongoCollection<Document> getCustomers() {
+		dc.setCollection("Customers");
+		return dc.getCollection();
+	}
+	
 	public void addCustomer(String[] data){
 		dc.setCollection("Customers");
 		MongoCollection<Document> mc = dc.getCollection();

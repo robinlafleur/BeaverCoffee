@@ -94,14 +94,4 @@ public class Login extends JPanel{
 	public void setErrorMsg(String error){
 		lblErrorMsg.setText(error);
 	}
-	
-	
-//	public static void main(String[] args) {
-//		JFrame frame = new JFrame();
-//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		frame.add(new Login(500, 400));
-//		frame.pack();
-//		frame.setVisible(true);
-//	}
-
 }

@@ -30,13 +30,4 @@ public class EmployeeMenuPanel extends MainMenuPanel {
 		return new JButton[]{btnAddCustomer, btnNewOrder, btnUpdateOrder};
 	}
 	
-	//Test
-	public static void main(String[] args) {
-		JFrame frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(new EmployeeMenuPanel(500, 400));
-		frame.pack();
-		frame.setVisible(true);
-	}
-
 }

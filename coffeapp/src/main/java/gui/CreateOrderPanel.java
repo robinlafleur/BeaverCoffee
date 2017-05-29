@@ -45,12 +45,4 @@ public class CreateOrderPanel extends JPanel{
 		return new Dimension(width, height);
 	}
 	
-	public static void main(String[] args) {
-		JFrame frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(new CreateOrderPanel(500, 550));
-		frame.pack();
-		frame.setVisible(true);
-	}
-	
 }

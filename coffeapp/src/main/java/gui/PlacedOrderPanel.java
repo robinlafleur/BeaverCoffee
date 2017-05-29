@@ -38,14 +38,5 @@ public class PlacedOrderPanel extends JPanel {
 		panel[1].add(btnUpdateOrder);
 		panel[1].add(btnDeleteOrder);
 		panel[1].add(scrollPane);
-	}
-	
-	public static void main(String[] args) {
-	JFrame frame = new JFrame();
-	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	frame.add(new PlacedOrderPanel(500, 400));
-	frame.pack();
-	frame.setVisible(true);
-}
-	
+	}	
 }
