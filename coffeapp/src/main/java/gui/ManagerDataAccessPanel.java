@@ -18,6 +18,7 @@ public class ManagerDataAccessPanel extends JPanel {
 	private JTextField tfName = new JTextField("Type name here");
 	private JTextField tfAddress = new JTextField("Type address here");
 	private JTextField tfID = new JTextField("Type ID,SSN or civic nr here");
+	private JTextField tfQuantity = new JTextField("Type new quantity");
 	private JButton btnCreate = new JButton("Create");
 	private JButton btnUpdate = new JButton("Update");
 	private JPanel btnPanel = new JPanel();
@@ -50,19 +51,13 @@ public class ManagerDataAccessPanel extends JPanel {
 		btnUpdate.setPreferredSize(btnSize);
 		btnPanel.setPreferredSize(new Dimension(width, 40));
 		tfOccupation.setPreferredSize(tfSize);
+		tfQuantity.setPreferredSize(tfSize);
 		
 		pnlTop.add(selection);
 		add(selection);
 		add(tfSearch);
 		add(btnSearch);
 		add(taInfo);
-		add(tfName);
-		add(tfAddress);
-		add(tfID);
-		add(tfOccupation);
-		add(btnPanel);
-		btnPanel.add(btnCreate);
-		btnPanel.add(btnUpdate);
 	}
 	
 	public JComboBox<String> getSelection() {
@@ -77,8 +72,12 @@ public class ManagerDataAccessPanel extends JPanel {
 		return tfSearch.getText();
 	}
 	
-	public String[] getNewInfo() {
+	public String[] getCustomerInfo() {
 		return new String[]{tfName.getText(), tfID.getText(), tfAddress.getText(), tfOccupation.getText()};
+	}
+	
+	public String[] getEmployeeInfo() {
+		return new String[]{tfName.getText(), tfID.getText(), tfAddress.getText()};
 	}
 	
 	public JButton[] getUpdateCreateButtons() {
@@ -87,6 +86,45 @@ public class ManagerDataAccessPanel extends JPanel {
 	
 	public void updateInfo(String info) {
 		taInfo.setText(info);
+	}
+	
+	public void drawCustomerTextFields() {
+		remove(tfQuantity);
+		btnCreate.setEnabled(true);
+		add(tfName);
+		add(tfAddress);
+		add(tfID);
+		add(tfOccupation);
+		add(btnPanel);
+		btnPanel.add(btnCreate);
+		btnPanel.add(btnUpdate);
+		revalidate();
+		repaint();
+	}
+	
+	public void drawEmployeeTextField() {
+		remove(tfOccupation);
+		remove(tfQuantity);
+		btnCreate.setEnabled(true);
+		add(tfAddress);
+		add(tfID);
+		add(btnPanel);
+		btnPanel.add(btnCreate);
+		btnPanel.add(btnUpdate);
+		revalidate();
+		repaint();
+	}
+	
+	public void drawProductTextField() {
+		remove(tfAddress);
+		remove(tfID);
+		remove(btnPanel);
+		remove(tfOccupation);
+		add(tfQuantity);
+		add(btnPanel);
+		btnCreate.setEnabled(false);
+		revalidate();
+		repaint();
 	}
 	
 	public static void main(String[] args) {

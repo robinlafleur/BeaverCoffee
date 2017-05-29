@@ -36,13 +36,13 @@ public class DatabaseSetup {
 		col.drop();
 		
 		Document emp1 = new Document("name", "Heres Johnny").append("ID", "8765432").append("address", "Elm Street 2, 23456, Chicago").
-				append("username", "heresjohnny").append("password", "pwhash");
+				append("username", "heresjohnny").append("password", "pwhash").append("comment", "No comment");
 		Document emp2 = new Document("name", "John Smith").append("ID", "52346").append("address", "Cloverfield Lane, 34567, London").
-				append("username", "johnsmith").append("password", "pwhash");
+				append("username", "johnsmith").append("password", "pwhash").append("comment", "No comment");
 		Document emp3 = new Document("name", "Gun Gunnarsson").append("ID", "640201-5634").append("address", "Malm�gatan 1, 12345, Malmö").
-				append("username", "gungunnarsson").append("password", "pwhash");
+				append("username", "gungunnarsson").append("password", "pwhash").append("comment", "No comment");
 		Document emp4 = new Document("name", "Ellen Ripley").append("ID", "2345678").append("address", "Nostromo 23, 13456, Minneapolis").
-				 				append("username", "ellenripley").append("password", "pwhash");
+				 				append("username", "ellenripley").append("password", "pwhash").append("comment", "No comment");
 		l = new ArrayList<Document>();
 		l.add(emp1);
 		l.add(emp2);

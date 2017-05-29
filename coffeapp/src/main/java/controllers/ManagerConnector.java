@@ -22,6 +22,7 @@ public class ManagerConnector {
 	private ManagerMenuPanel manager;
 	private ManagerDataAccessPanel managerDataPanel;
 	private CustomerHandler customerHandler;
+	private OrderHandler orderHandler;
 	private String mongoCollection = "Customers";
 	private JComboBox<String> itemSelection;
 	
@@ -45,7 +46,7 @@ public class ManagerConnector {
 		search.addActionListener(new DataListener());
 		itemSelection = managerDataPanel.getSelection();
 		itemSelection.addActionListener(new ComboBoxListener());
-		
+		managerDataPanel.drawCustomerTextFields();
 		
 		for(JButton btn : updateCreateBtn) {
 			btn.addActionListener(new CreateAndUpdateListener());
@@ -57,7 +58,15 @@ public class ManagerConnector {
 		public void actionPerformed(ActionEvent e) {
 			@SuppressWarnings("unchecked")
 			JComboBox<String> selection = (JComboBox<String>)e.getSource();
-			mongoCollection = (String) selection.getSelectedItem();		
+			mongoCollection = (String) selection.getSelectedItem();
+			if(mongoCollection.equals("Customers")) {
+				managerDataPanel.drawCustomerTextFields();
+			} else if(mongoCollection.equals("Employee")) {
+				managerDataPanel.drawEmployeeTextField();
+				System.out.println(mongoCollection);
+			} else {
+				managerDataPanel.drawProductTextField();
+			}
 			
 		}
 		
@@ -94,21 +103,24 @@ public class ManagerConnector {
 			checkButton(e.getSource());
 		}
 		private void checkButton(Object o) {
-			String[] info = managerDataPanel.getNewInfo();
-			if(mongoCollection.equals("Customers") && info !=null) {
+			String[] info;
+			if(mongoCollection.equals("Customers")) {
+				info = managerDataPanel.getCustomerInfo();
 				if(o == updateCreateBtn[0]) {
 					customerHandler.addCustomer(info);
 				} else if(o == updateCreateBtn[1]) {
 					customerHandler.updateCustomer(info);
 				}
-			}else if(mongoCollection.equals("Employee") && info !=null) {
+			}else if(mongoCollection.equals("Employee")) {
 				/*
 				 * TODO Create employeeHandler class with add/update methods
 				 */
-			} else if(mongoCollection.equals("Products") && info != null){
-				/*
-				 * TODO Create productHandler class with add/update methods
-				 */
+			} else if(mongoCollection.equals("Products")){
+				if(o == updateCreateBtn[0]) {
+					
+				}else if(o == updateCreateBtn[1]) {
+					
+				}
 			}
 		}
 	}
